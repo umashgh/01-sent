@@ -2,7 +2,7 @@
 <script>
           async function loadModel(){ 
               model = await tf.loadModel('web_model/model.json'); 
-              y = model.predict(tf.random.stateless_uniform([1,52], minval=2, maxval=2000, dtype=tf.int32)) ;
+              y = model.predict(tf.random.stateless_uniform([52], minval=2, maxval=2000, dtype=tf.int32)) ;
               console.log(y);
               var x='Unable to say anything';
               if(y[0]===0){
