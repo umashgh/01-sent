@@ -1,0 +1,14 @@
+<head><script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.12.0"> </script>
+<script>
+          async function loadModel(){ 
+              model = await tf.loadModel('web_model/model.json') 
+              y = model.predict(tf.random.uniform([1,52], minval=2, maxval=2000, dtype=tf.dtypes.int)) 
+              document.getElementById('out').innerHTML = y.dataSync()[0] 
+          } 
+          loadModel() 
+</script>
+</head> 
+<body>
+        <p>Simple Web Page</p>
+        <p id ='out'></p> 
+</body>
