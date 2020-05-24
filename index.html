@@ -1,9 +1,15 @@
 <head><script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@0.12.0"> </script>
 <script>
           async function loadModel(){ 
-              model = await tf.loadModel('web_model/model.json') 
-              y = model.predict(tf.random.uniform(shape=(1,52), minval=2, maxval=2000, dtype=tf.dtypes.int)) 
-              document.getElementById('out').innerHTML = y.dataSync()[0] 
+              model = await tf.loadModel('web_model/model.json'); 
+              y = model.predict(tf.random.uniform(shape=(1,52), minval=2, maxval=2000, dtype=tf.dtypes.int)) ;
+              let x='Unable to say anything';
+              if(y===0){
+                        x="Negative sentiment";
+                 } else{
+                       x="Positive sentiment";
+                 }
+              document.getElementById('out').innerHTML = x 
           } 
           loadModel() 
 </script>
