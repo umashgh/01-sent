@@ -2,16 +2,16 @@
 <script>
           async function loadModel(){ 
               model = await tf.loadModel('web_model/model.json'); 
-              y = model.predict(tf.random.uniform(shape=(1,52), minval=2, maxval=2000, dtype=tf.dtypes.int)) ;
-              let x='Unable to say anything';
+              y = model.predict(tf.random.stateless_uniform([1,52], minval=2, maxval=2000, dtype=tf.int32)) ;
+              var x='Unable to say anything';
               if(y===0){
-                        x="Negative sentiment";
+                        x='Negative sentiment';
                  } else{
-                       x="Positive sentiment";
+                       x='Positive sentiment';
                  }
               document.getElementById('out').innerHTML = x; 
           } 
-          loadModel() 
+          loadModel(); 
 </script>
 </head> 
 <body>
